@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Cinemachine;
+using Unity.Cinemachine;
 using KBCore.Refs;
 using UnityEngine;
 using Utilities;
@@ -206,7 +206,7 @@ namespace Platformer {
             }
             
             // Apply velocity
-            rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
         }
 
         public void HandleMovement() {
@@ -221,14 +221,14 @@ namespace Platformer {
                 SmoothSpeed(ZeroF);
                 
                 // Reset horizontal velocity for a snappy stop
-                rb.velocity = new Vector3(ZeroF, rb.velocity.y, ZeroF);
+                rb.linearVelocity = new Vector3(ZeroF, rb.linearVelocity.y, ZeroF);
             }
         }
 
         void HandleHorizontalMovement(Vector3 adjustedDirection) {
             // Move the player
             Vector3 velocity = adjustedDirection * (moveSpeed * dashVelocity * Time.fixedDeltaTime);
-            rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
+            rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
         }
 
         void HandleRotation(Vector3 adjustedDirection) {
