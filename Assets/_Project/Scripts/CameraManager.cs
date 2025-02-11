@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Unity.Cinemachine;
+using Cinemachine;
 using KBCore.Refs;
 using UnityEngine;
 

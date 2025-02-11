@@ -11,10 +11,10 @@ using static UnityEditor.AssetDatabase;
 namespace MyTools {
     public static class Setup {
         [MenuItem("Tools/Setup/Create Default Folders")]
-        //public static void CreateDefaultFolders() {
-        //    Folders.CreateDefault("_Project", "Animation", "Art", "Materials", "Prefabs", "Scripts/ScriptableObjects", "Scripts/UI");
-        //    Refresh();
-        //}
+        public static void CreateDefaultFolders() {
+            Folders.CreateDefault("_Project", "Animation", "Art", "Materials", "Prefabs", "Scripts/ScriptableObjects", "Scripts/UI");
+            Refresh();
+        }
 
         [MenuItem("Tools/Setup/Import My Favorite Assets")]
         public static void ImportMyFavoriteAssets() {
@@ -44,28 +44,28 @@ namespace MyTools {
             });
         }
 
-        //static class Folders {
-        //    public static void CreateDefault(string root, params string[] folders) {
-        //        var fullpath = Path.Combine(Application.dataPath, root);
-        //        if (!Directory.Exists(fullpath)) {
-        //            Directory.CreateDirectory(fullpath);
-        //        }
-        //        foreach (var folder in folders) {
-        //            CreateSubFolders(fullpath, folder);
-        //        }
-        //    }
+        static class Folders {
+            public static void CreateDefault(string root, params string[] folders) {
+                var fullpath = Path.Combine(Application.dataPath, root);
+                if (!Directory.Exists(fullpath)) {
+                    Directory.CreateDirectory(fullpath);
+                }
+                foreach (var folder in folders) {
+                    CreateSubFolders(fullpath, folder);
+                }
+            }
     
-        //    private static void CreateSubFolders(string rootPath, string folderHierarchy) {
-        //        var folders = folderHierarchy.Split('/');
-        //        var currentPath = rootPath;
-        //        foreach (var folder in folders) {
-        //            currentPath = Path.Combine(currentPath, folder);
-        //            if (!Directory.Exists(currentPath)) {
-        //                Directory.CreateDirectory(currentPath);
-        //            }
-        //        }
-        //    }
-        //}
+            private static void CreateSubFolders(string rootPath, string folderHierarchy) {
+                var folders = folderHierarchy.Split('/');
+                var currentPath = rootPath;
+                foreach (var folder in folders) {
+                    currentPath = Path.Combine(currentPath, folder);
+                    if (!Directory.Exists(currentPath)) {
+                        Directory.CreateDirectory(currentPath);
+                    }
+                }
+            }
+        }
 
         static class Packages {
             static AddRequest Request;
